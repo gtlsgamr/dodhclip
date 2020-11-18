@@ -1,0 +1,21 @@
+#!/bin/sh
+mkdir -p $HOME/.config/dodhclip
+CLIPDIR="${HOME}/.config/dodhclip/"
+while true
+do
+	no=$(grep -c '^' ${CLIPDIR}/dodhclip)
+	if [[ $no -gt 9 ]];
+	then
+		sed -i '1d;' ${CLIPDIR}/dodhclip;
+		echo "Lines increase ! Delete!";
+	fi
+	current=$(xclip -o);
+	latest=$(tail -1 ${CLIPDIR}/dodhclip);
+	if [[ $current != $latest ]]
+	then
+
+		echo -e "${current}" >> ${CLIPDIR}/dodhclip;
+		echo $current" COPIED!";
+	fi
+	sleep 4;
+done
