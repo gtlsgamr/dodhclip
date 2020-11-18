@@ -7,7 +7,6 @@ do
 	if [[ $no -gt 9 ]];
 	then
 		sed -i '1d;' ${CLIPDIR}/dodhclip;
-		echo "Lines increase ! Delete!";
 	fi
 	current=$(xclip -o);
 	latest=$(tail -1 ${CLIPDIR}/dodhclip);
@@ -15,7 +14,6 @@ do
 	then
 
 		echo -e "${current}" >> ${CLIPDIR}/dodhclip;
-		echo $current" COPIED!";
 	fi
 	sleep 4;
 done
